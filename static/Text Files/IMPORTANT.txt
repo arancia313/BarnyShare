@@ -1,0 +1,3 @@
+The Test Files will be moved to this folder to collect them.
+
+NOTE: if something is wrong, The recovery.txt file will be used to restore the index.html file.

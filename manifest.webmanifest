@@ -1,0 +1,21 @@
+{
+  "short_name": "Barny",
+  "name": "BarnyWarp",
+  "description": "A Scratch mod based on Snail IDE.",
+  "icons": [
+    {
+      "src": "BarnyWarp%20Icon.svg",
+      "type": "image/svg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "BarnyWarp%20Icon%20(Sturdy).svg",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "editor",
+  "background_color": "#0f0f0f",
+  "display": "standalone",
+  "theme_color": "#0f0f0f"
+}

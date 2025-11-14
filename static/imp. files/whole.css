@@ -1,0 +1,228 @@
+ body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 0, 0);
+        }
+        h1{
+            color: Orangered; /* OrangeRed color for better contrast */
+            font-size: 3em;
+            text-align: center;
+            text-decoration: none;
+        }
+        p {
+            color: white; /* White color for better contrast */
+            font-size: 1.5em;
+            text-align: right;
+            text-decoration: none;
+        }
+        a {
+            color: aliceblue; /* AliceBlue color for links */
+            font-size: 1.5em;
+            text-align: right;
+            text-decoration: underline; 
+        }
+        a:hover {
+            color: OrangeRed; /* OrangeRed color for better contrast */
+            font-size: 1.5em;
+            text-align: right;
+            text-decoration: underline;
+        }
+        button {
+            background-color: Orange;
+            border-color: OrangeRed;
+            margin: 0;
+            padding: 0;
+            color: black; /* Black color for better contrast */
+            border-radius: 5px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button:hover {
+            background-color: OrangeRed; /* Change background color on hover */
+            border-color: Orange; /* Change border color on hover */
+            margin: 0;
+            padding: 0;
+            color: White; /* Change text color on hover */
+            border-radius: 5px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        a.active, a:hover, li #darkModeToggle.active {
+            border: 0px solid white;
+            background-color: rgba(0, 0, 0, 0.125);
+            /* transition: 0.5s; */
+        }
+
+        li #darkModeToggle img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle; /* Align the image vertically. */
+            cursor: pointer;
+        }
+
+        li #IconImage img {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle; /* Align the image vertically. */
+            transition: transform 0.3s ease-in-out; /* Add a smooth transition effect. */
+        }
+
+        #IconImage img:hover {
+            background-color: transparent;
+            transform: scale(1.1);
+        }
+
+        #IconImage img:not(:hover) {
+            background-color: transparent;
+            transform: scale(1); /* Return to regular size when not hovered. */
+        }
+        nav {
+            height: 60px;
+            width: 100%;
+            background-color: #631400;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            float: center;
+            margin-left: 50;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 0 8px;
+            line-height: 60px;
+        }
+
+        nav a {
+            color: white;
+            font-size: 18px;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+            padding: 7px 10px;
+            border-radius: 3px;
+        }
+
+        nav input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+
+        #searchIcon {
+            font-size: 18px;
+            vertical-align: middle; /* Align the image vertically */
+            border: 1px solid rgb(63, 63, 63);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        section {
+            background: rgb(0, 0, 0);
+            color: orangered;
+            padding: 20px;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+        }
+        footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                size: 30px;
+                padding: 0;
+                height: 4vh;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: orangered;
+                text-align: center;
+                color: white;
+                font-size:1em;
+         }
+           footer ul {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                size: 30px;
+                padding: 0;
+                height: 4vh;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: orangered;
+                text-align: center;
+                color: white;
+                font-size:1em;
+         }
+        footer.dark-mode {
+            background-color: #333333;
+            color: white;
+        }
+
+        .footer-row {
+            margin-bottom: 60px;
+            width: 100%; /* Each row takes the full width */
+            flex: 100%; /* Adjust the width of each footer-row */
+            display: block;
+            padding: 10px;
+        ;
+            left: 0;
+            background-color: rgb(57, 14, 0);
+        }
+
+        .footer-row a {
+            color: orange;
+            text-decoration: underline;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-row p {
+            color: white; /* White color for better contrast */
+            font-size: 2rem;
+            text-align: center;
+            text-decoration: none;
+        }
+        .footer-row a.dark-mode {
+            color: orange;
+            text-decoration: underline;
+            display: block;
+            margin-bottom: 5px;
+        }
+        body.dark-mode {
+            background-color: #460e00;
+            color: white;
+        }
+        nav.dark-mode {
+            background-color: orange;
+        }
+        nav.dark-mode input[type="text"] {
+            color: white; /* Darker color for dark mode */
+            background-color: #333333; /* Darker color for dark mode */
+        }
+        nav.dark-mode #searchIcon {
+            color: white; /* Darker color for dark mode */
+            background-color: #333333; /* Darker color for dark mode */
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 3px;
+        }

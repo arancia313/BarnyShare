@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black; /* Black color is more comfortable for the eyes */
+        }
+        h1 {
+            color: white; /* White color, because it's more visible when the screen is black */
+            text-decoration: none;
+        }
+        button {
+            background-color: Orangered; /* OrangeRed color, because it's more rigid and visible. Also, it can be seen from some distance. */
+            border-color: Orange; /* Orange color, because it's more visible than the red */
+            font-size: 20px; /* 20px */
+        }
+        .login-container {
+            text-align: center;
+            color: white;
+        }
+        .login-container input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">RAR</button>
+        </form>
+    </div>
+</body>
+</html>

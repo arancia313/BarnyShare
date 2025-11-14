@@ -1,0 +1,12 @@
+{
+  "name": "barnywarp",
+  "version": "2.0.1",
+  "lockfileVersion": 2,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "barnywarp",
+      "version": "2.0.0"
+    }
+  }
+}

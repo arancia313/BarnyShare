@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>BarnyWarp - Extensions</title>
+    <link rel="icon" href="https://arancia313.github.io/BarnyWarp/BarnyWarp%20Icon.svg">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        body.dark-mode {
+             font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000000;
+            color: #ffffff;  
+        }
+        h1 {
+            color: orangered;
+            font-size: 2rem;
+            margin-top: 80px;
+            text-align: center;
+        }
+        p, a {
+            color: aliceblue;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .extensions-list {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        button {
+            background-color: orange;
+            border: 1px solid orangered;
+            padding: 8px 12px;
+            color: black;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: orangered;
+            color: white;
+        }
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: orangered;
+            color: white;
+            font-size: 0.95rem;
+        }
+        .footer-row {
+            margin-bottom: 60px;
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(57,14,0);
+            text-align: center;
+        }
+        #searchBar {
+            margin-left: 8px;
+            padding: 4px 6px;
+            border-radius: 3px;
+            border: 1px solid #333;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>BarnyWarp's Extension collection</h1>
+    <p>A bunch of extensions made by Arancia 3 by using <a href = "https://jwklong.github.io/extforge">Extforge</a> and <a href = "https://dev-turbobuilder.vercel.app">TurboBuilder</a>.</p>   
+    <div class = "extensions-list" role = "list">
+    <button id = "ext-Barny" role= "listitem">BarnyWarp</button>
+    <button id = "ext-extflashy" role= "listitem">Extflashy</button>
+    <button id = "ext-barnyline" role= "listitem">BarnyLine</button>
+    </div>
+
+    <script>
+              // This will explain to you those extensions.
+
+            const Extensions = [
+                  "BarnyWarp: That's the first ever extension. Allows connecting to servers, and a thing like the BarnyAddress.",
+                  "Extflashy: An extension for the BarnyWarp's AI, extflashy. I know it is a bit broken.",
+                  "[SOON] BarnyLine: An extension that allows 'Connections' to sprites."
+            ]
+
+            const explanation = Extensions[Math.floor(Math.random() * Extensions.length)]
+            console.log(explanation)          
+        
+        // when you click the first button be like:
+        
+             $('#ext-Barny').on('click', function () {
+            window.location.href = "https://arancia313.github.io/BarnyWarp/extensions/BarnyWarp.js";
+        });
+              // when you click the second button be like:
+
+            $('#ext-extflashy').on('click', function () {
+            window.location.href = "https://arancia313.github.io/BarnyWarp/extensions/Extflashy.js";
+        
+        })
+              // when you click the second button be like:
+
+            $('#ext-barnyline').on('click', function () {
+            window.location.href = "https://arancia313.github.io/BarnyWarp/extensions/BarnyLine.js";
+        
+        })
+    </script>
+
+    <div class="footer-row" style="display:none;">
+    </div>
+
+    <footer>
+        <ul style="display:flex;gap:8px;align-items:center;margin:0;padding:0;">
+            <li><a id="IconImage" href="https://arancia313.github.io/BarnyWarp"><img src="https://arancia313.github.io/BarnyWarp/BarnyWarp%20Icon.svg" alt="Icon" style="height:28px;vertical-align:middle"></a></li>
+            <li><a id="darkModeToggle" href="#" aria-label="Toggle dark mode"><img src="https://arancia313.github.io/BarnyWarp/static/assets/system/moon.png" alt="Moon Icon" style="height:20px;vertical-align:middle"></a></li>
+            <li><a href="https://github.com/arancia313/BarnyWarp" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://arancia313.github.io" target="_blank" rel="noopener">Arancia 3</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
+
+
