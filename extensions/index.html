@@ -395,18 +395,6 @@
                window.location.replace = "https://arancia313.github.io/BarnyShare/extensions/Extflashy.js"
         });
 
-        // Aggiungi tab "Troppen" solo se esiste .navTabs
-        if ($('.navTabs').length) {
-            var newURL = window.location.protocol + "//" + window.location.host + "/p/troppen";
-            var newTitle = "Troppen";
-            $(".navTabs").append('<li><a href="' + newURL + '" title="' + newTitle + '" id="troppenTab">Troppen</a></li>');
-            $("#troppenTab").on("click", function() {
-                console.log("Fine della stringa imprevista.");
-            });
-        }
-
-        
-
         // Carica commit recenti da GitHub API
         $.get('https://api.github.com/repos/arancia313/BarnyWarp/commits?sha=work', function(data) {
             var commitsSection = $("#recentChanges ul");
