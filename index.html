@@ -203,6 +203,24 @@
             align-items: center;
             text-align: center;
         }
+		.section-3 {
+			background: rgb(199, 199, 199);
+            color: orangered;
+            padding: 20px;
+            border-radius: 20px;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+		}
+		.section-3.dark-mode {
+			background: rgb(26, 26, 26);
+            color: orangered;
+            padding: 20px;
+            border-radius: 20px;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+		}
         .footer-warn {
                 position: fixed;
                 bottom: 0;
@@ -357,6 +375,12 @@
                 <button id = "#antistress">Antistress</button>
                 <button id = "downloadBtn">Download Latest Editor For BarnyWarp</button>
     </section>
+	       <div class = ".section-3">
+			   <div id = "recentChanges2">
+				   <h2>Recent changes on old version</h2>
+				   <ul></ul>
+			   </div>
+		   </div>
            <div class = "section-2">
                   <h2>What's new?</h2>
                   <p>There are now BarnyAddresses! You must open the console and check it out.</p>
@@ -397,7 +421,7 @@
             applyMode(newMode);
         });
         function applyMode(mode) {
-            $('body, nav, section, footer, .footer-row a, .section-2, .footer-row, button').removeClass('dark-mode light-mode').addClass(mode);
+            $('body, nav, section, footer, .footer-row a, .section-2, .footer-row, button, .section-3').removeClass('dark-mode light-mode').addClass(mode);
         }
 
         // Ricerca
@@ -453,6 +477,17 @@
             });
         });
 
+		// Loads recent changes of the old version.
+        $.get('https://api.github.com/repos/arancia313/BarnyWarp/commits?sha=work', function(data) {
+            var commitsSection = $("#recentChanges2 ul");
+            data.forEach(function(commit) {
+                if (commit.author && commit.author.login.toLowerCase() !== "web-flow") {
+                    var commitInfo = commit.author.login;
+                    var commitTitle = commit.commit.message;
+                    commitsSection.append($('<ul>').text(commitInfo + ": " + commitTitle));
+                }
+            });
+        });
     
     // A warning, because BarnyWarp is still in development.
     console.log('BarnyWarp is currently in development, some clogs may break due to the code changing all the time.');
