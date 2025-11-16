@@ -172,7 +172,7 @@
             margin-top: 60px;
         }
         section.dark-mode {
-            background: rgb(20, 20, 20);
+            background: rgb(19, 19, 19);
             color: orangered;
             padding: 20px;
             BORDER-RADIUS: 20px;
@@ -190,7 +190,7 @@
             margin-top: 60px;
         }
         .section-2.dark-mode {
-            background: rgb(26, 26, 26);
+            background: rgb(19, 19, 19);
             color: orangered;
             padding: 20px;
             border-radius: 20px;
@@ -203,24 +203,6 @@
             align-items: center;
             text-align: center;
         }
-		.section-3 {
-			background: rgb(199, 199, 199);
-            color: orangered;
-            padding: 20px;
-            border-radius: 20px;
-            align-items: center;
-            text-align: center;
-            margin-top: 60px;
-		}
-		.section-3.dark-mode {
-			background: rgb(26, 26, 26);
-            color: orangered;
-            padding: 20px;
-            border-radius: 20px;
-            align-items: center;
-            text-align: center;
-            margin-top: 60px;
-		}
         .footer-warn {
                 position: fixed;
                 bottom: 0;
@@ -338,6 +320,16 @@
             border: 1px solid rgb(0, 0, 0);
             border-radius: 3px;
         }
+        .toggle-content.show {
+            max-height: 500px; /* large enough for content. */
+            opacity: 1;
+            padding: 0.75rem 1rem;
+        }
+        #toggleBtn {
+            cursor: pointer;
+            padding: 0.5rem 0.9rem;
+            margin-top: 0.6rem;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -374,19 +366,17 @@
                 <p>Welcome to the page of BarnyWarp.</p>
                 <button id = "#antistress">Antistress</button>
                 <button id = "downloadBtn">Download Latest Editor For BarnyWarp</button>
+                <!-- Thanks copilot for your help. AI is getting crazier and crazier... -->
+                <div>
+                    <button id="toggleBtn" aria-expanded="false" aria-controls="toggleContent">Show Changes of old version</button>
+                </div>
     </section>
-	       
-           <div class = "section-2">
-                  <h2>What's new?</h2>
-                  <p>There are now BarnyAddresses! You must open the console and check it out.</p>
+           <div id = "toggleContent" class = "section-2" hidden>
+            <div id = "recentChanges2">
+                <h2>Recent changes on old version</h2>
+                <ul></ul>
             </div>
-	
-				<div class = ".section-3">
-			   <div id = "recentChanges2"> 
-				   <h2>Recent changes on old version</h2>
-				   <ul></ul>
-			   </div>
-		   </div>  
+
             <!-- A script for the BarnyAddresses.-->
               <script>
                     const BarnyAddresses = [
@@ -780,6 +770,26 @@ class Ce extends ie {
 }
 export {Ce as component};
    </script>
+    </script>
+    <!-- Toggle script for show/hide button -->
+    <script>
+        (function(){
+            const btn = document.getElementById('toggleBtn');
+            const content = document.getElementById('toggleContent');
+            if (!btn || !content) return;
+            // Ensure content starts hidden for browsers that don't support the 'hidden' attribute animation
+            content.classList.remove('show');
+            content.hidden = true;
+            btn.addEventListener('click', function() {
+                const isShown = content.classList.toggle('show');
+                // Update hidden attribute for semantics
+                content.hidden = !isShown;
+                // Update aria and button label
+                btn.setAttribute('aria-expanded', String(isShown));
+                btn.textContent = isShown ? 'Hide details' : 'Show details';
+            });
+        })();
+    </script>
                </body>
                   <!-- Can you please get this? i don't want to get bankrupt, just for publishing the editor for BarnyWarp. -->
                   <!-- Chill out, dude. Just chill. How about you review some code on snail IDE's repo?-->
