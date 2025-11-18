@@ -539,6 +539,27 @@
         ];
             const fact = Barnyfacts[Math.floor(Math.random() * Barnyfacts.length)];
             console.log(`%cBarnyFact: %c${fact}`, "color: orangered; font-size: 1.5em; font-weight: bold;", "color: white; font-size: 1.25rem;"); // AHH copilot.
+
+             (function(BarnyWarp) {
+    // Creates the Commands if you're an Admin.
+    const Admin = Math.floor(Math.random() * 2);
+    alert("Verifying if you're an Admin or not.");
+    if (Admin === 2) {
+        alert("Creating commands...");
+        const Commands = [
+            ";guestBuster", ";shutdown",
+            ";showGlobal", ";guest",
+            ";unshowGlobal", ";strangerMode"
+            
+        ];
+        alert("You have access to BarnyWarp's Commands.")
+        if (typeof BarnyWarp === 'object' && BarnyWarp !== null) {
+            BarnyWarp.commands = Commands;
+        }
+    } else {
+        alert("Unable to make commands: You're not an Admin.");
+    }
+})(typeof BarnyWarp !== 'undefined' ? BarnyWarp : {});
    </script>
    <!-- Script 2. The server must be here. -->
    <script>
