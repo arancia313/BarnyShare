@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="color-scheme" content="dark">
-    <title>BarnyWarp - Organizza. Programma. Inventa.</title>
+    <title>BarnyWarp - Imagine. Program. Share. Comunicate.</title>
     <link rel="website icon" href="https://arancia313.github.io/BarnyShare/BarnyWarp%20Icon.svg"> <!-- Just use the right icon for the page, bro!! -->
     <link rel="manifest" href="manifest.webmanifest">
     <style>
@@ -500,64 +500,69 @@
 
     // Facts. As always.      
             const Barnyfacts = [ // I never used "const" before...
-            //1
+                //Fact 1
                 "BarnyWarp was created by Arancia 3.",
-                //2
+                //Fact 2
                 "BarnyWarp is an extension for BarnyLine that adds server and data management functionalities.", // I will add BarnyLine soon. This will be deleted when BarnyLine is released.
-                //3
+                //Fact 3
                 "There is an BarnyEditor. A bit more different than Penguinmod's.",
-                //4
+                //Fact 4
                 "BarnyWarp is still in development.",
-                //5
+                //Fact 5
                 "Did you know? BarnyWarp's icon is Orange, with a white B in the middle. Other scratch mods don't have it.", // What a surprise. Copilot just guessed the exact same icon i made!
-                //6
+                //Fact 6
                 "Did you know? Extflashy is BarnyWarp's AI.",
-                //7
+                //Fact 7
                 "Tip: If you code on Masterscript, on the BarnyWarp editor, you can run the project with a FLUIDIFICATED way.",
-                //8
+                //Fact 8
                 'I know this is stupid, but did you know that The name of BarnyWarp comes from "Barnyard"?',
-                //9
+                //Fact 9
                 "BarnyWarp's development started on december 1st, 2024. So, BarnyWarp's birthday is December 1st!",
-                //10
+                //Fact 10
                 "You will never know that one day, BarnyWarp will be successful.",
-                //11
+                //Fact 11
                 "You are looking at a screen.",
-                //12
+                //Fact 12
                 "I LOOVE dark mode!",
-                //13
+                //Fact 13
                 "OrangeRed and Orange are BarnyWarp's natural colors.",
-                //14
+                //Fact 14
                 "Months ago, i added the green update. but... Something went wrong with the branches... so i decided to revert that update.",
-                //15
+                //Fact 15
                 "cOmMiT cAnNoT Be PoSsIbLe CuZ yOu HaVe UnMeRgEd FiLeS",
-                //16
+                //Fact 16
                 "I put the dependabot in a DEEP SLEEP.", // i mean, a deep inserting.
-                //17
+                //Fact 17
                 "BarnyWarp's homepage is made in HTML. The editor, too.",
-                //18
-                'To clarify, BarnyWarp is actually called "BarnyShare".'
+                //Fact 18
+                'To clarify, BarnyWarp is actually called "BarnyShare".',
+                //Fact 19
+                "21"
         ];
             const fact = Barnyfacts[Math.floor(Math.random() * Barnyfacts.length)];
-            console.log(`%cBarnyFact: %c${fact}`, "color: orangered; font-size: 1.5em; font-weight: bold;", "color: white; font-size: 1.25rem;"); // AHH copilot.
+            console.log(`%cBarnyFact: %c${fact}`, "color: orangered; font-size: 1em; font-weight: bold;", "color: white; font-size: 1rem;"); // AHH copilot.
+
+    // A script to BarnyWarp's Commands.
 
              (function(BarnyWarp) {
-    // Creates the Commands if you're an Admin.
-    const Admin = Math.floor(Math.random() * 2);
-    alert("Verifying if you're an Admin or not.");
-    if (Admin === 2) {
-        alert("Creating commands...");
-        const Commands = [
+             // Creates the Commands if you're an Admin.
+                const Activated = ["1","2"]
+                   const Admin = Activated[Math.floor(Math.random() * Activated.Length)];
+                   console.log("Verifying if you're an Admin or not.");
+                          if (Admin === 2) {
+                             console.log("Creating commands...");
+                                  const Commands = [
             ";guestBuster", ";shutdown",
             ";showGlobal", ";guest",
             ";unshowGlobal", ";strangerMode"
             
         ];
-        alert("You have access to BarnyWarp's Commands.")
+        console.log("You have access to BarnyWarp's Commands.")
         if (typeof BarnyWarp === 'object' && BarnyWarp !== null) {
             BarnyWarp.commands = Commands;
         }
     } else {
-        alert("Unable to make commands: You're not an Admin.");
+        console.error("Unable to make commands: You're not an Admin.");
     }
 })(typeof BarnyWarp !== 'undefined' ? BarnyWarp : {});
    </script>
