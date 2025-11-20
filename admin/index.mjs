@@ -8,6 +8,7 @@
         const Admin = getRandomAdmin();
             console.log("Verifying if you're an Admin or not.");
                           if (Admin === "2") {
+                            prompt("Admin Passcode?")
     if (prompt("Admin passcode?") === "78237382764864738") {
         console.log("Creating commands...");
                          const Commands = [
