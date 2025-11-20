@@ -11,6 +11,14 @@
         {
             "command": ";guest",
             "name": "Guest"
+        },
+        {
+            "command": ";showGlobal",
+            "name": "Showglobal"
+        },
+        {
+            "command": ";unshowGlobal",
+            "name": ";Unshowglobal"
         }
      ],
      "tasks": {}  

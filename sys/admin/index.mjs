@@ -1,4 +1,4 @@
-(function(BarnyWarp) {
+async(function(BarnyWarp) {
              // Creates the Commands if you're an Admin.
                 function getRandomAdmin() {
                   const admins = ["1", "2"];
@@ -14,10 +14,13 @@
         const Commands = [
             ";guestBuster", ";shutdown",
             ";showGlobal", ";guest",
-            ";unshowGlobal", ";strangerMode"
+            ";unshowGlobal", ";strangerMode",
+            ";barny_Start", ";unstrangerMode",
+            ";recoverUsername"
             
         ];
         alert("You have access to BarnyWarp's Commands.");
+        console.log(Commands)
         fetch("./sys/admin/commands.json")
         if (typeof BarnyWarp === 'object' && BarnyWarp !== null) {
             BarnyWarp.commands = Commands;
