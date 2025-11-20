@@ -8,7 +8,7 @@
         const Admin = getRandomAdmin();
             console.log("Verifying if you're an Admin or not.");
                           if (Admin === "2") {
-                            prompt("Admin Passcode?")
+                            prompt("Admin Passcode?");
     if (prompt("Admin passcode?") === "78237382764864738") {
         console.log("Creating commands...");
                          const Commands = [
@@ -18,19 +18,19 @@
             
         ];
         alert("You have access to BarnyWarp's Commands.");
-        fetch("./admin/commands.json") // "fetch"? That's good. But... 
+        fetch("./sys/admin/commands.json") // "fetch"? That's good. But... 
         // is it good if it's a literal string? //
         if (typeof BarnyWarp === 'object' && BarnyWarp !== null) {
             BarnyWarp.commands = Commands;
         }
     } else {
         console.log("WHOOPS! You've got the passcode wrong...")
-    }
+    };
 
     } else {
         console.log("Unable to make commands: You're not an Admin.");
     }
-})(typeof BarnyWarp !== 'undefined' ? BarnyWarp : {});
+})(typeof BarnyWarp !== 'admin' ? BarnyWarp : {});
 /*
       This will run as soon as you're on BarnyWarp's Homepage.
       It will basically decide if you're an Admin or not.
