@@ -541,31 +541,8 @@
         ];
             const fact = Barnyfacts[Math.floor(Math.random() * Barnyfacts.length)];
             console.log(`%cBarnyFact: %c${fact}`, "color: orangered; font-size: 1em; font-weight: bold;", "color: white; font-size: 1rem;"); // AHH copilot.
-
-    // A script to BarnyWarp's Commands.
-
-             (function(BarnyWarp) {
-             // Creates the Commands if you're an Admin.
-                const Activated = ["1","2"]
-                   const Admin = Activated[Math.floor(Math.random() * Activated.Length)];
-                   console.log("Verifying if you're an Admin or not.");
-                          if (Admin === 2) {
-                             console.log("Creating commands...");
-                                  const Commands = [
-            ";guestBuster", ";shutdown",
-            ";showGlobal", ";guest",
-            ";unshowGlobal", ";strangerMode"
-            
-        ];
-        console.log("You have access to BarnyWarp's Commands.")
-        if (typeof BarnyWarp === 'object' && BarnyWarp !== null) {
-            BarnyWarp.commands = Commands;
-        }
-    } else {
-        console.error("Unable to make commands: You're not an Admin.");
-    }
-})(typeof BarnyWarp !== 'undefined' ? BarnyWarp : {});
    </script>
+   <script src = "./.admin/index.mjs"></script>
    <!-- Script 2. The server must be here. -->
    <script>
        // I want this server. This http server NEEDS to be here...
