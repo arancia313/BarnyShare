@@ -483,24 +483,6 @@
 			);
 			console.warn("If you don't know what this window does, EXIT NOW! People can use this to upload inappropriate projects under YOUR name, delete YOUR projects, and get YOU banned from BarnyWarp!");
    </script>
-
-   <!-- Script 2. The server must be here. -->
-   <script>
-       // I want this server. This http server NEEDS to be here...
-import { createServer } from 'node:http';
-
-       const server = createServer((req, res) => {
-       res.writeHead(200, { 'Content-Type': 'text/plain' });
-       res.end('Hello World!\n');
-    });
-
-// starts a simple http server locally on port 2000
-       server.listen(2000, '127.0.0.1', () => {
-          console.log('Listening on 127.0.0.1:2000');
-   });
-
-// run with `node server.mjs`
-   </script>
     </script>
     <!-- Toggle script for show/hide button -->
     <script>
