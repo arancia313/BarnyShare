@@ -1,3 +1,4 @@
+// Admin commands.
 (function (BarnyWarp) {
   // Creates the Commands if you're an Admin.
   function getRandomAdmin() {
