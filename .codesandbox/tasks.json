@@ -3,10 +3,12 @@
   "setupTasks": [
     {
       "command": "start",
-      "name": "s"
+      "name": "start"
     }
   ],
 
   // These tasks can be run from CodeSandbox. Running one will open a log in the app.
-  "tasks": {}
+  "tasks": {
+    "command": "start"
+  }
 }

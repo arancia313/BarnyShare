@@ -1,37 +1,39 @@
-async(function(BarnyWarp) {
-             // Creates the Commands if you're an Admin.
-                function getRandomAdmin() {
-                  const admins = ["1", "2"];
-                  return admins[Math.floor(Math.random() * admins.length)];
-                }
-                
-        const Admin = getRandomAdmin();
-            console.log("Verifying if you're an Admin or not.");
-                          if (Admin === "2") {
-        prompt("Admin Passcode?");
-    if (prompt("Admin passcode?") === "78237382764864738") {
-        console.log("Creating commands...");
-        const Commands = [
-            ";guestBuster", ";shutdown",
-            ";showGlobal", ";guest",
-            ";unshowGlobal", ";strangerMode",
-            ";barny_Start", ";unstrangerMode",
-            ";recoverUsername"
-            
-        ];
-        alert("You have access to BarnyWarp's Commands.");
-        console.log(Commands)
-        fetch("./sys/admin/commands.json")
-        if (typeof BarnyWarp === 'object' && BarnyWarp !== null) {
-            BarnyWarp.commands = Commands;
-        }
-    } else {
-        console.log("WHOOPS! You've got the passcode wrong...")
-    };
+(function (BarnyWarp) {
+  // Creates the Commands if you're an Admin.
+  function getRandomAdmin() {
+    const admins = ["1", "2"];
+    return admins[Math.floor(Math.random() * admins.length)];
+  }
 
+  const Admin = getRandomAdmin();
+  console.log("Verifying if you're an Admin or not.");
+  if (Admin === "2") {
+    prompt("Admin Passcode?");
+    if (prompt("Admin passcode?") === "78237382764864738") {
+      console.log("Creating commands...");
+      const Commands = [
+        ";guestBuster",
+        ";shutdown",
+        ";showGlobal",
+        ";guest",
+        ";unshowGlobal",
+        ";strangerMode",
+        ";barny_Start",
+        ";unstrangerMode",
+        ";recoverUsername",
+      ];
+      alert("You have access to BarnyWarp's Commands.");
+      console.log(Commands);
+      fetch("./sys/admin/commands.json");
+      if (typeof BarnyWarp === "object" && BarnyWarp !== null) {
+        BarnyWarp.commands = Commands;
+      }
     } else {
-        console.log("Unable to make commands: You're not an Admin.");
+      console.log("WHOOPS! You've got the passcode wrong...");
     }
+  } else {
+    console.log("Unable to make commands: You're not an Admin.");
+  }
 });
 /*
       This will run as soon as you're on BarnyWarp's Homepage.
