@@ -1,0 +1,13 @@
+{
+     // this will run when opening BarnyWarp.
+     "adminCommands": [
+        {
+            "command": ";shutdown",
+            "name": "Shutdown"
+        },
+        {
+            "command": ";guestBuster",
+            "name": "Guestbuster"
+        }
+     ]
+}
