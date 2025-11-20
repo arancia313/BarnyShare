@@ -1,8 +1,12 @@
-        (function(BarnyWarp) {
+(function(BarnyWarp) {
              // Creates the Commands if you're an Admin.
-                const Activated = ["1","2"];
-                   const Admin = Activated[Math.floor(Math.random() * Activated.length)];
-                   console.log("Verifying if you're an Admin or not.");
+                function getRandomAdmin() {
+                  const admins = ["1", "2"];
+                  return admins[Math.floor(Math.random() * admins.length)];
+                }
+                
+        const Admin = getRandomAdmin();
+            console.log("Verifying if you're an Admin or not.");
                           if (Admin === "2") {
                              console.log("Creating commands...");
             const Commands = [
@@ -12,7 +16,8 @@
             
         ];
         alert("You have access to BarnyWarp's Commands.");
-        fetch("./admin/commands.json") // "fetch"? That's good.
+        fetch("./admin/commands.json") // "fetch"? That's good. But... 
+        // is it good if it's a literal string? //
         if (typeof BarnyWarp === 'object' && BarnyWarp !== null) {
             BarnyWarp.commands = Commands;
         }
