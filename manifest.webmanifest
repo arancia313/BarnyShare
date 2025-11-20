@@ -1,6 +1,6 @@
 {
   "short_name": "Barny",
-  "name": "BarnyWarp",
+  "name": "BarnyShare",
   "description": "A Scratch mod based on Snail IDE.",
   "icons": [
     {
@@ -9,8 +9,8 @@
       "sizes": "192x192"
     },
     {
-      "src": "BarnyWarp%20Icon%20(Sturdy).svg",
-      "type": "image/png",
+      "src": "BarnyWarp%20Icon.svg",
+      "type": "image/svg+xml",
       "sizes": "512x512"
     }
   ],
