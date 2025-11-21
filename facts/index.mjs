@@ -37,7 +37,21 @@
                 //Fact 18
                 'To clarify, BarnyWarp is actually called "BarnyShare".',
                 //Fact 19
-                "21"
+                "21",
+                //Fact 20
+                "You can now install BarnyWarp. Obviously, because of the Manifest.",
+                //Fact 21
+                "Use BarnyWarp instead of Snail IDE: BarnyWarp makes unlimited terabytes, and saves the projects on your archive.",
+                //Fact 22
+                "No matter how big the project is: BarnyWarp still handles it.",
+                //Fact 23
+                "Tip: Using Extflashy's Inline suggestions and Colored custom blocks can help clean up your code.",
+                //Fact 24
+                "Install BarnyWarp's homepage only if you don't trust that program i inserted to the old version.",
+                //Fact 25
+                'It has been confirmed that there will be a software called "BarnyShare Insiders".', // This is a secret, i cannot tell you!!! |:)
+                //Fact 26
+                "BarnyWarp's Editor is still in development."
         ];
             const fact = Barnyfacts[Math.floor(Math.random() * Barnyfacts.length)];
             console.log(`%cBarnyFact: %c${fact}`, "color: orangered; font-size: 1em; font-weight: bold;", "color: white; font-size: 1rem;"); // AHH copilot.
