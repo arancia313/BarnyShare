@@ -30,8 +30,7 @@
   } else {
     console.log("Unable to make commands: You're not an Admin.");
   }
-});
-/*
+}); /*
       This will run as soon as you're on BarnyWarp's Homepage.
       It will basically decide if you're an Admin or not.
       If the Admin thing returns 1, then you're not an Admin.
