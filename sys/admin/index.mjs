@@ -1,5 +1,6 @@
 // Admin commands.
 (function (BarnyWarp) {
+      'use strict';
   // Creates the Commands if you're an Admin.
   function getRandomAdmin() {
     const admins = ["1", "2"];
