@@ -2,6 +2,7 @@
 /static/disabled files/Space Ambience.wav
 /sys/addresses/index.mjs
 /static/.vscode/launch.json
+/static/github//dependabot.yml
 /static/.vscode/.ipynb_checkpoints/Good news-checkpoint.txt
 /static/.vscode/.ipynb_checkpoints/index-checkpoint.html
 /static/.vscode/.ipynb_checkpoints/index-checkpoint.md
@@ -16,3 +17,4 @@
 /static/src/routes/devposts/+page.svelte
 /static/assets/media/frontpage.png
 /.codesandbox/tasks.json
+/tools.html

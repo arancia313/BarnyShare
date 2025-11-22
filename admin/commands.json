@@ -23,5 +23,8 @@
      ],
      "jacks": {
         "command": "start"
-     }  
+     },
+     "configurations": [
+        "type", "chrome"
+     ]
 }
