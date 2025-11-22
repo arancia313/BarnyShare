@@ -33,7 +33,7 @@ const server = http.createServer((req, res) => {
     // Inietta lo script di auto-reload nei file HTML
     if (ext === '.html') {
       let html = data.toString();
-      const reloadScript = '<script>\n(function() {\n  const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";\n  const ws = new WebSocket(protocol + "//" + window.location.host);\n  ws.onmessage = (event) => {\n    if (event.data === "reload") {\n      console.log("File modificato, ricarico...");\n      window.location.reload();\n    }\n  };\n  ws.onerror = () => {\n    console.log("Connessione WebSocket persa, riprovo...");\n    setTimeout(() => window.location.reload(), 2000);\n  };\n})();\n</script>';
+      const reloadScript = '<script>\n(function() {\n  const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";\n  const ws = new WebSocket(protocol + "//" + window.location.host);\n  ws.onmessage = (event) => {\n    if (event.data === "reload") {\n      console.log("One file is modified! Reloading...");\n      window.location.reload();\n    }\n  };\n  ws.onerror = () => {\n    console.log("Lost websocket connection. Trying again...");\n    setTimeout(() => window.location.reload(), 2000);\n  };\n})();\n</script>';
       html = html.replace('</body>', reloadScript + '</body>');
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(html);

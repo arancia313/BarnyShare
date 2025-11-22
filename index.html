@@ -265,7 +265,7 @@
             margin-bottom: 60px;
             width: 100%; /* Each row takes the full width */
             flex: 1%; /* Adjust the width of each footer-row */
-            display: square;
+            display: flex;
             justify-content: center;
             padding: 23px;
             border-radius: 20px;
@@ -276,7 +276,7 @@
             margin-bottom: 60px;
             width: 100%; /* Each row takes the full width */
             flex: 1%; /* Adjust the width of each footer-row */
-            display: square;
+            display: flex;
             justify-content: center;
             padding: 23px;
             border-radius: 20px;
@@ -334,27 +334,26 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <footer>
-  <footer>
+    <nav>
         <ul style="display:flex;gap:8px;align-items:center;margin:0;padding:0;">
-            <a id="IconImage" href="https://arancia313.github.io/BarnyShare"><img src="https://arancia313.github.io/BarnyShare/BarnyWarp%20Icon.svg" alt="Icon" style="height:28px;vertical-align:middle"></a></li>
-            <a id="IconImage" href="https://arancia313.github.io/BarnyShare/devposts/13-11-25-extflashy"><img src="https://arancia313.github.io/BarnyShare/static/assets/media/extflashy.svg" alt="Extflashy" style="height:28px;vertical-align:middle"></a></li>
-            <a id="darkModeToggle" href= "#" aria-label="Toggle dark mode"><img src="https://arancia313.github.io/BarnyShare/static/assets/system/moon.png" alt="Moon Icon" style="height:20px;vertical-align:middle"></a></li>
-            <a href = "https://github.com/arancia313/BarnyShare" target="_blank" rel="noopener">GitHub</a></li>
-            <a href = "https://arancia313.github.io" target="_blank" rel="noopener">Arancia 3</a></li>
-            <a href = "https://arancia313.github.io/BarnyShare/editor">Editor</a>
-            <a href = "https://arancia313.github.io/BarnyShare/tools.html">Tools</a>
-            <a href = "https://arancia313.github.io/BarnyShare/devposts">Devposts</a>
-            <a href = "https://arancia313.github.io/BarnyShare/extensions">Extensions</a>
-            <a href = "https://arancia313.github.io/BarnyShare/sturdy.html">Sturdy</a>
-            <input type="text" id="searchBar" placeholder="Search or Jump into..."></li>
-    </footer>
-    </footer>
+            <li><a id="IconImage" href="https://arancia313.github.io/BarnyShare"><img src="https://arancia313.github.io/BarnyShare/BarnyWarp%20Icon.svg" alt="Icon" style="height:28px;vertical-align:middle"></a></li>
+            <li><a id="IconImage" href="https://arancia313.github.io/BarnyShare/devposts/13-11-25-extflashy"><img src="https://arancia313.github.io/BarnyShare/static/assets/media/extflashy.svg" alt="Extflashy" style="height:28px;vertical-align:middle"></a></li>
+            <li><a id="darkModeToggle" href="#" aria-label="Toggle dark mode"><img src="https://arancia313.github.io/BarnyShare/static/assets/system/moon.png" alt="Moon Icon" style="height:20px;vertical-align:middle"></a></li>
+            <li><a href="https://github.com/arancia313/BarnyShare" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://arancia313.github.io" target="_blank" rel="noopener">Arancia 3</a></li>
+            <li><a href="https://arancia313.github.io/BarnyShare/editor">Editor</a></li>
+            <li><a href="https://arancia313.github.io/BarnyShare/tools.html">Tools</a></li>
+            <li><a href="https://arancia313.github.io/BarnyShare/devposts">Devposts</a></li>
+            <li><a href="https://arancia313.github.io/BarnyShare/extensions">Extensions</a></li>
+            <li><a href="https://arancia313.github.io/BarnyShare/sturdy.html">Sturdy</a></li>
+            <li><input type="text" id="searchBar" placeholder="Search or Jump into..."></li>
+        </ul>
+    </nav>
     
     <div class="footer-row">
         <h1>BarnyWarp</h1>
         <p>Royal-based coding with tons of capabilities</p>
-        <p>Built off Penguinmod and Snail IDE</a></p>
+        <p>Built off Penguinmod and Snail IDE</p>
         <p>Scratch Note: Please don't mention BarnyWarp on Scratch, i have different rules compared to Scratch! 😅</p>
         <button id = "try">Try it out!</button>
     </div>
@@ -364,7 +363,7 @@
             <ul></ul>
         </div>
                 <p>Welcome to the page of BarnyWarp.</p>
-                <button id = "#antistress">Antistress</button>
+                <button id="antistress">Antistress</button>
                 <button id = "downloadBtn">Download Latest Editor For BarnyWarp</button>
                 <!-- Thanks copilot for your help. AI is getting crazier and crazier... -->
                 <div>
@@ -437,7 +436,7 @@
             });
         
                 $('#try').click(function() {
-                window.location.replace = "https://arancia313.github.io/BarnyWarp/editor";
+                window.location.href = "https://arancia313.github.io/BarnyShare/editor";
         });
 
         // Carica commit recenti da GitHub API
@@ -480,7 +479,6 @@
 				"color:white;font-family:sans-serif;font-size:1.75rem;font-weight:900;-webkit-text-stroke: .5px black"
 			);
 			console.warn("If you don't know what this window does, EXIT NOW! People can use this to upload inappropriate projects under YOUR name, delete YOUR projects, and get YOU banned from BarnyWarp!");
-   </script>
     </script>
     <!-- Toggle script for show/hide button -->
     <script>
