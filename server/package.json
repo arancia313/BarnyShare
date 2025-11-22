@@ -1,0 +1,12 @@
+{
+  "name": "barnyshare-server",
+  "version": "1.0.0",
+  "description": "Dev server per BarnyShare con auto-reload",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.0"
+  }
+}
