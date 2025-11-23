@@ -1,5 +1,6 @@
 /*
-   Copy and paste the code to add it to your project.
+   Created with ExtForge
+   https://jwklong.github.io/extforge
 */
 (async function(Scratch) {
     const variables = {};
@@ -205,6 +206,11 @@
                     "text": "Username synced?",
                     "blockType": "Boolean",
                     "arguments": {}
+                }, {
+                    "opcode": "block_76b88483815afe44",
+                    "text": "phrase",
+                    "blockType": "reporter",
+                    "arguments": {}
                 }]
             }
         }
@@ -282,7 +288,8 @@
         }
         async block_4d4fd894ae1afdc1(args) {
             if (await extension["block_fb610aa709787af7"]({})) {
-                ExtForge.Variables.set("Username", Scratch.Cast.toNumber((0)))
+                ExtForge.Variables.set("Logged in?", Scratch.Cast.toNumber((0)))
+                ExtForge.Variables.set("Username", Scratch.Cast.toString(("null")))
                 console.log(("Logged out."));
             } else {
                 return (("Not connected"))
@@ -307,6 +314,9 @@
             } else {
                 return (("false"))
             };
+        }
+        async block_76b88483815afe44(args) {
+            return (("\"The Kuh's bond and lightness crowded\""))
         }
     }
 
