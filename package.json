@@ -4,10 +4,6 @@
   "authors": "arancia313",
   "version": "2.0.1",
   "main": "pathToMain",
-  "scripts": {
-    "start": "node /server/index.js",
-    "dev": "nodemon /server/index.js"
-  },
   "keywords": [
     "arancia313",
     "arancia",
@@ -43,9 +39,5 @@
     "Power_Classic_Kuh",
     "Power_Qwerty",
     "Power_Azerty"
-  ],
-  "dependencies": {
-    "package-name": "arancia313-patch-clog-1",
-    "arancia313-patch-clog-1": "^1.0.0"
-  }
+  ]
 }

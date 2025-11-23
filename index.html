@@ -69,7 +69,7 @@
             color: black; /* Black color for better contrast */
             border-radius: 5px;
             font-size: 14px;
-            display: flex;
+            display: top;
             align-items: center;
             justify-content: center;
         }
@@ -109,7 +109,7 @@
         nav {
             height: 60px;
             width: 99%;
-            background-color: #ff3300;
+            background-color: orange;
             display: flex;
             text-align: center;
             position: fixed;
@@ -128,15 +128,15 @@
             top: 0;
             z-index: 1000;
         }
-        nav ul {
+        footer ul {
             float: center;
             margin-left: 50;
         }
 
-        nav li {
+        footer li {
             display: inline-block;
-            margin: 0 8px;
-            line-height: 60px;
+            margin: 0.5px;
+            line-height: 10px;
         }
 
         nav a {
@@ -265,7 +265,8 @@
             margin-bottom: 60px;
             width: 100%; /* Each row takes the full width */
             flex: 1%; /* Adjust the width of each footer-row */
-            display: flex;
+            display: top;
+            align-items: center;
             justify-content: center;
             padding: 23px;
             border-radius: 20px;
@@ -276,20 +277,19 @@
             margin-bottom: 60px;
             width: 100%; /* Each row takes the full width */
             flex: 1%; /* Adjust the width of each footer-row */
-            display: flex;
+            display: top;
+            align-items: center;
             justify-content: center;
             padding: 23px;
             border-radius: 20px;
             left: 0;
-            background-color: rgb(43, 11, 0);
+            background-color: rgb(53, 12, 0);
             
         }
         .footer-row a {
             color: orange;
             text-decoration: none;
-            display: flex;
             align-items: center;
-            justify-content: center;
         }
         .footer-row p {
             color: white; /* White color for better contrast */
@@ -334,8 +334,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <nav>
-        <ul style="display:flex;gap:8px;align-items:center;margin:0;padding:0;">
+    <footer>
+        <ul style="display:top;gap:8px;align-items:center;margin:0;padding:0;">
             <li><a id="IconImage" href="https://arancia313.github.io/BarnyShare"><img src="https://arancia313.github.io/BarnyShare/BarnyWarp%20Icon.svg" alt="Icon" style="height:28px;vertical-align:middle"></a></li>
             <li><a id="IconImage" href="https://arancia313.github.io/BarnyShare/devposts/13-11-25-extflashy"><img src="https://arancia313.github.io/BarnyShare/static/assets/media/extflashy.svg" alt="Extflashy" style="height:28px;vertical-align:middle"></a></li>
             <li><a id="darkModeToggle" href="#" aria-label="Toggle dark mode"><img src="https://arancia313.github.io/BarnyShare/static/assets/system/moon.png" alt="Moon Icon" style="height:20px;vertical-align:middle"></a></li>
@@ -348,14 +348,14 @@
             <li><a href="https://arancia313.github.io/BarnyShare/sturdy.html">Sturdy</a></li>
             <li><input type="text" id="searchBar" placeholder="Search or Jump into..."></li>
         </ul>
-    </nav>
+    </footer>
     
     <div class="footer-row">
         <h1>BarnyWarp</h1>
         <p>Royal-based coding with tons of capabilities</p>
         <p>Built off Penguinmod and Snail IDE</p>
         <p>Scratch Note: Please don't mention BarnyWarp on Scratch, i have different rules compared to Scratch! 😅</p>
-        <button id = "try">Try it out!</button>
+        <button id = "try" >Try it out!</button>
     </div>
         <section>
         <div id = "recentChanges">
@@ -395,7 +395,7 @@
             applyMode(newMode);
         });
         function applyMode(mode) {
-            $('body, nav, section, footer, .footer-row a, .section-2, .footer-row, button, .section-3').removeClass('dark-mode light-mode').addClass(mode);
+            $('body, nav, section, footer, .footer-row a, .section-2, .footer-row, button').removeClass('dark-mode light-mode').addClass(mode);
         }
 
         // Ricercas
@@ -467,7 +467,7 @@
     console.log('BarnyWarp is currently in development, some clogs may break due to the code changing all the time.');
 
     document.addEventListener('DOMContentLoaded', function() {
-        if (window.location.pathname.includes('/BarnyWarp')) {
+        if (window.location.pathname.includes('/BarnyShare')) {
             document.body.classList.add('barnywarp-page');
         }
     });
@@ -495,7 +495,7 @@
                 content.hidden = !isShown;
                 // Update aria and button label
                 btn.setAttribute('aria-expanded', String(isShown));
-                btn.textContent = isShown ? 'Hide details' : 'Show details';
+                btn.textContent = isShown ? 'Hide Changes of old version' : 'Show Changes of old version';
             });
         })();
     </script>

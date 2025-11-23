@@ -5,13 +5,13 @@
   
   ws.onmessage = (event) => {
     if (event.data === 'reload') {
-      console.log('File modificato, ricarico...');
-      window.location.reload();
+      console.log('File updated, reloading...');
+      window.location.reload("https://arancia313.github.io/BarnyShare");
     }
   };
   
   ws.onerror = () => {
-    console.log('Connessione WebSocket persa, riprovo...');
+    console.log('WebSocket connection lost. Reloading...');
     setTimeout(() => window.location.reload(), 2000);
   };
 })();
