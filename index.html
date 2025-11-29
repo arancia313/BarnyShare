@@ -420,17 +420,7 @@
             });
         }
 
-        // Download button
-        $('#downloadBtn').click(function() {
-            if (confirm('Do you want to download BarnyWarp?')) {
-                alert('The webpage is installing the .zip folder for BarnyWarp.');
-                window.location.href="https://github.com/arancia313/BarnyWarp/releases/download/get2/BarnyWarp.2.5.zip";
-            } else {
-                window.location.href="https://arancia313.github.io/BarnyShare";
-            }
-        });
-
-                     // buttons.
+            // buttons.
             $('#antistress').click(function() {
                 console.log("Clicked.")
             });
@@ -501,6 +491,7 @@
     </script>
                        <script type = "module" src = "./admin/index.mjs"></script>
                        <script type = "module" src = "./facts/index.mjs"></script>
+                       <script src  = "./sys/download.js"></script>
                </body>
                   <!-- Can you please get this? i don't want to get bankrupt, just for publishing the editor for BarnyWarp. -->
                   <!-- Chill out, dude. Just chill. How about you review some code on snail IDE's repo?-->
