@@ -6,7 +6,6 @@
                     window.location.href="https://github.com/arancia313/BarnyWarp/releases/download/get2/BarnyWarp.2.5.zip";
                 } else {
                     alert("Download was cancelled.")
-                    console.warn("Fatal Error!")
                 };
             } else {
                 window.location.href="https://arancia313.github.io/BarnyShare";
