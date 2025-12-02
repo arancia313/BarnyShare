@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BarnyShare - File Manager</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .header {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 14px;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #764ba2;
+    }
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #333;
+    }
+    .btn-secondary:hover {
+      background: #e0e0e0;
+    }
+    .files-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    .files-list {
+      list-style: none;
+    }
+    .file-item {
+      padding: 20px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+    .file-item:hover {
+      background: #f8f9fa;
+    }
+    .file-item:last-child {
+      border-bottom: none;
+    }
+    .file-info {
+      flex: 1;
+    }
+    .file-name {
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 5px;
+      word-break: break-all;
+    }
+    .file-meta {
+      color: #999;
+      font-size: 12px;
+    }
+    .file-size {
+      color: #666;
+      font-weight: 500;
+    }
+    .file-actions {
+      display: flex;
+      gap: 10px;
+      margin-left: 20px;
+    }
+    .btn-download, .btn-delete {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-download {
+      background: #667eea;
+      color: white;
+    }
+    .btn-download:hover {
+      background: #764ba2;
+    }
+    .btn-delete {
+      background: #ff6b6b;
+      color: white;
+    }
+    .btn-delete:hover {
+      background: #ff5252;
+    }
+    .empty-state {
+      padding: 60px 20px;
+      text-align: center;
+      color: #999;
+    }
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+    .empty-title {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .loading {
+      padding: 40px;
+      text-align: center;
+      color: #667eea;
+    }
+    .spinner {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 3px solid #f0f0f0;
+      border-top: 3px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .alert {
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    .alert.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+    .alert.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+    .sort-controls {
+      padding: 15px 20px;
+      background: #f8f9fa;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .sort-controls label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: #666;
+      font-size: 14px;
+    }
+    .sort-controls select {
+      padding: 6px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #333;
+    }
+    @media (max-width: 600px) {
+      .file-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .file-actions {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+      }
+      .btn-download, .btn-delete {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📁 BarnyShare - File Manager</h1>
+      <p class="subtitle">Manage and download your uploaded files</p>
+      <div class="controls">
+        <a href="./upload.html" class="btn btn-primary">📤 Upload New Files</a>
+        <a href="./index.html" class="btn btn-secondary">🏠 Back to Home</a>
+        <a href="/admin/logout" class="btn btn-secondary" id="logoutBtn">🔒 Logout</a>
+      </div>
+    </div>
+
+    <div id="alert" class="alert"></div>
+
+    <div class="files-container">
+      <div class="sort-controls">
+        <label>
+          Sort by:
+          <select id="sortSelect">
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="date-desc">Newest First</option>
+            <option value="date-asc">Oldest First</option>
+            <option value="size-desc">Largest First</option>
+            <option value="size-asc">Smallest First</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading files...</p>
+      </div>
+
+      <ul class="files-list" id="filesList"></ul>
+
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <div class="empty-icon">📭</div>
+        <div class="empty-title">No files uploaded yet</div>
+        <p>Upload files to get started</p>
+        <a href="./upload.html" class="btn btn-primary" style="margin-top: 20px;">📤 Upload Files</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const filesList = document.getElementById('filesList');
+    const emptyState = document.getElementById('emptyState');
+    const loading = document.getElementById('loading');
+    const alert = document.getElementById('alert');
+    const sortSelect = document.getElementById('sortSelect');
+
+    // Redirect to login if not authenticated
+    (async function() {
+      try {
+        const res = await fetch('/admin/status');
+        if (!res.ok) throw new Error('status failed');
+        const js = await res.json();
+        if (!js.authenticated) {
+          location.href = '/admin/login.html?next=/files.html';
+        }
+        // obtain CSRF token for authenticated session
+        try {
+          const t = await fetch('/admin/csrf-token');
+          if (t.ok) {
+            const b = await t.json();
+            window.CSRF_TOKEN = b.csrfToken;
+          }
+        } catch (er) {
+          console.warn('CSRF token fetch failed', er);
+        }
+      } catch (e) {
+        console.warn('Auth status check failed', e);
+      }
+    })();
+
+    let files = [];
+
+    async function loadFiles() {
+      loading.style.display = 'block';
+      try {
+        const response = await fetch('/api/files');
+        if (!response.ok) throw new Error('Failed to load files');
+        files = await response.json();
+        renderFiles();
+      } catch (err) {
+        showAlert('Error loading files: ' + err.message, 'error');
+      } finally {
+        loading.style.display = 'none';
+      }
+    }
+
+    function renderFiles() {
+      filesList.innerHTML = '';
+      
+      if (files.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+      }
+      
+      emptyState.style.display = 'none';
+
+      files.forEach(file => {
+        const li = document.createElement('li');
+        li.className = 'file-item';
+        const uploadDate = new Date(file.uploadDate).toLocaleString();
+        const fileSize = formatFileSize(file.size);
+        
+        li.innerHTML = `
+          <div class="file-info">
+            <div class="file-name">${escapeHtml(file.name)}</div>
+            <div class="file-meta">
+              <span class="file-size">${fileSize}</span> • 
+              <span>Uploaded: ${uploadDate}</span>
+            </div>
+          </div>
+          <div class="file-actions">
+            <a href="/uploads/${encodeURIComponent(file.filename)}" download class="btn-download" title="Download">⬇️ Download</a>
+            <button class="btn-delete" onclick="deleteFile('${escapeHtml(file.filename)}')" title="Delete">🗑️ Delete</button>
+          </div>
+        `;
+        filesList.appendChild(li);
+      });
+    }
+
+    async function deleteFile(filename) {
+      if (!confirm(`Delete "${filename}"? This cannot be undone.`)) return;
+
+        try {
+          const headers = window.CSRF_TOKEN ? { 'x-csrf-token': window.CSRF_TOKEN } : {};
+          const response = await fetch(`/api/files/${encodeURIComponent(filename)}`, {
+            method: 'DELETE',
+            headers
+          });
+          if (!response.ok) throw new Error('Failed to delete file');
+        
+          showAlert(`File "${filename}" deleted successfully`, 'success');
+          loadFiles();
+        } catch (err) {
+          showAlert('Error deleting file: ' + err.message, 'error');
+        }
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    function showAlert(message, type) {
+      alert.textContent = message;
+      alert.className = `alert ${type}`;
+      setTimeout(() => {
+        alert.className = 'alert';
+      }, 5000);
+    }
+
+    sortSelect.addEventListener('change', () => {
+      sortFiles(sortSelect.value);
+    });
+
+    function sortFiles(sortBy) {
+      const [field, direction] = sortBy.split('-');
+      
+      files.sort((a, b) => {
+        let aVal, bVal;
+        
+        if (field === 'name') {
+          aVal = a.name.toLowerCase();
+          bVal = b.name.toLowerCase();
+        } else if (field === 'date') {
+          aVal = new Date(a.uploadDate).getTime();
+          bVal = new Date(b.uploadDate).getTime();
+        } else if (field === 'size') {
+          aVal = a.size;
+          bVal = b.size;
+        }
+        
+        if (direction === 'asc') {
+          return aVal > bVal ? 1 : -1;
+        } else {
+          return aVal < bVal ? 1 : -1;
+        }
+      });
+      
+      renderFiles();
+    }
+
+    loadFiles();
+    setInterval(loadFiles, 10000); // Refresh every 10 seconds
+  </script>
+</body>
+</html>

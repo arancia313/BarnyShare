@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Logging out...</title>
+  <style>body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:0;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#f3f4f6} .card{background:#fff;padding:20px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.08);text-align:center}</style>
+</head>
+<body>
+  <div class="card">
+    <h2>Signing out…</h2>
+    <p>Please wait</p>
+  </div>
+  <script>
+    (async function(){
+      try {
+        await fetch('/admin/logout');
+      } catch (e) {
+        console.warn('Logout request failed', e);
+      } finally {
+        // Redirect to login page
+        location.href = '/admin/login.html?next=/index.html';
+      }
+    })();
+  </script>
+</body>
+</html>
