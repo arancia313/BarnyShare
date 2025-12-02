@@ -1,58 +1,95 @@
 (function(BarnyWarp) {
   'use strict';
-  // Creates the Commands if you're an Admin.
-  function getRandomAdmin() {
-    const admins = ["1", "2"];
-    return admins[Math.floor(Math.random() * admins.length)];
+  /*
+   Improved admin flow:
+   - Do NOT store an admin passcode in a publicly fetchable JSON file.
+   - Load commands list (public) from commands.json using import.meta.url
+   - Request server-side verification of the passcode via a POST to a
+     verification endpoint (e.g. ./admin/verify). If verification succeeds
+     assign the commands to `BarnyWarp.commands`.
+  */
+  async function loadCommands() {
+    try {
+      const url = new URL('commands.json', import.meta.url);
+      const res = await fetch(url.href);
+      if (!res.ok) throw new Error('Failed to load commands.json');
+      const data = await res.json();
+      if (Array.isArray(data.commands)) return data.commands;
+      return null;
+    } catch (err) {
+      console.error('Error loading commands.json:', err);
+      return null;
+    }
   }
 
-  const Admin = getRandomAdmin();
-  console.log("Verifying if you're an Admin or not.");
-  if (Admin === "2") {
-    // Load expected passcode and optional commands from server-side JSON
-    fetch("./admin/commands.json")
-      .then((res) => {
-        if (!res.ok) throw new Error('Failed to load commands.json');
-        return res.json();
-      })
-      .then((data) => {
-        const expectedPasscode = data && typeof data.passcode === 'string' ? data.passcode : null;
-        const fetchedCommands = Array.isArray(data && data.commands) ? data.commands : null;
-        const entered = prompt("Admin passcode?");
-        if (!expectedPasscode) {
-          console.error('No passcode configured on server.');
-          return;
-        }
-        if (entered === expectedPasscode) {
-          console.log("Creating commands...");
-          const Commands = fetchedCommands || [
-            ";guestBuster", ";shutdown",
-            ";showGlobal", ";guest",
-            ";unshowGlobal", ";strangerMode",
-            ";barny_Start", ";unstrangerMode",
-            ";recoverUsername",
-          ];
-          alert("You have access to BarnyWarp's Commands.");
-          console.log(Commands);
-          if (typeof BarnyWarp === "object" && BarnyWarp !== null) {
-            BarnyWarp.commands = Commands;
-          }
-        } else {
-          alert("WHOOPS! You've got the passcode wrong...");
-        }
-      })
-      .catch((err) => {
-        console.error('Error loading commands:', err);
+  async function verifyPasscode(passcode) {
+    try {
+      /*
+      This endpoint should verify the passcode server-side and must NOT
+      return the passcode itself. It should return { authorized: true }
+      when the passcode is valid. Implement the server endpoint separately.
+      */
+      const verifyUrl = new URL('verify', import.meta.url).href;
+      const res = await fetch(verifyUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode }),
       });
-  } else {
-    console.log("Unable to make commands: You're not an Admin.");
+      if (!res.ok) {
+        console.warn('Passcode verification endpoint returned', res.status);
+        return false;
+      }
+      const json = await res.json();
+      return !!json && !!json.authorized;
+    } catch (err) {
+      // If verification fails (endpoint absent/unreachable), do NOT grant admin.
+      console.warn('Verify endpoint not available or failed:', err);
+      return false;
+    }
   }
-})(typeof window !== 'undefined' ? window.BarnyWarp : (typeof globalThis !== 'undefined' ? globalThis.BarnyWarp : undefined)); /*
-      This will run as soon as you're on BarnyWarp's Homepage.
-      It will basically decide if you're an Admin or not.
-      If the Admin thing returns 1, then you're not an Admin.
-      But if it returns 2, then YOU have to type a secret
-      Admin passcode. If you get it wrong, i'm sorry, but
-      you will not be an Admin. The passcode is complex,
-      you know.
-*/
+
+  async function init() {
+    console.log('Initializing admin module...');
+    const fetchedCommands = await loadCommands();
+    const defaultCommands = [
+      ";guestBuster", ";shutdown",
+      ";showGlobal", ";guest",
+      ";unshowGlobal", ";strangerMode",
+      ";barny_Start", ";unstrangerMode",
+      ";recoverUsername",
+    ];
+    const Commands = fetchedCommands || defaultCommands;
+    /*
+     Prompt for passcode and verify it server-side. We intentionally do NOT
+     rely on any passcode shipped inside commands.json.
+    */
+    const entered = prompt('Admin passcode?');
+    if (entered === null) {
+      console.log(
+        '%cFATAL ERROR!!! %cAdmin prompt cancelled by user.',
+        "color:white",
+        "color:red"
+      );
+      return;
+    }
+
+    const authorized = await verifyPasscode(entered);
+    if (authorized) {
+      alert("You have access to BarnyWarp's Commands.");
+      console.log('Creating commands...', Commands);
+      if (typeof BarnyWarp === 'object' && BarnyWarp !== null) {
+        BarnyWarp.commands = Commands;
+      }
+    } else {
+      alert("WHOOPS! Passcode non valida o verifica server-side non disponibile.");
+    }
+  }
+
+  // Run only in browser environments.
+  if (typeof window !== 'undefined') {
+    init();
+  } else {
+    console.log('Admin module not started: not running in a browser.');
+  }
+
+})(typeof window !== 'undefined' ? window.BarnyWarp : (typeof globalThis !== 'undefined' ? globalThis.BarnyWarp : undefined));

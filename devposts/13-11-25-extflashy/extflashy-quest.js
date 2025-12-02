@@ -1,7 +1,7 @@
 (function(BarnyWarp) {
      $.documentQuerySelector("#talk").onclick(function() {
         // Daily quests.
-           if (prompt("What can i do for you?") = "???") {
+           if (prompt("What can i do for you?")) {
             alert(
                  "%cNo assets were returned. This error is temporary and should not be reported.",
                  "color:red"
