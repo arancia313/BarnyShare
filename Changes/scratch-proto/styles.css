@@ -1,0 +1,11 @@
+* { box-sizing: border-box; font-family: system-ui, Arial, sans-serif; }
+body, html, #app { height: 100%; margin: 0; }
+#app { display:flex; gap: 12px; padding: 12px; }
+#left { flex: 1 1 60%; display:flex; flex-direction:column; }
+#right { width: 520px; display:flex; flex-direction:column; gap:10px; }
+#controls { margin-bottom:8px; }
+#controls button { margin-right:6px; }
+#blocklyDiv { border: 1px solid #ddd; background:#f9f9f9; }
+#stageWrap { border:1px solid #ccc; padding:8px; background: #fff; }
+#stage { background: #5FB0FF22; display:block; }
+#log { height: 120px; overflow:auto; border:1px solid #ddd; padding:8px; background:#fff; }

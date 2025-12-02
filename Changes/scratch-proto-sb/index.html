@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scratch‑blocks Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Attempt to load scratch-blocks from CDN. If unavailable, follow README to install via npm and build. -->
+  <script src="https://unpkg.com/scratch-blocks/dist/scratch-blocks.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="left">
+      <header id="editorHeader">
+        <div class="brand">Scratch + Prototype</div>
+        <div id="controls">
+          <button id="runBtn" class="icon-btn" title="Play">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"></path></svg>
+          </button>
+          <button id="stopBtn" class="icon-btn" title="Stop">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6 6h12v12H6z"></path></svg>
+          </button>
+          <button id="saveBtn" class="icon-btn" title="Save">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4zM12 19a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM13 9V3.5L18.5 9H13z"></path></svg>
+          </button>
+          <input id="fileLoader" type="file" accept="text/xml" style="display:none" />
+          <button id="loadBtn" class="icon-btn" title="Load">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2v10l3-3-1.4-1.4L13 9.2V2h-1zM5 20h14v2H5v-2z"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <div id="blocklyArea">
+        <div id="blocklyDiv" style="height:600px; width:100%;"></div>
+      </div>
+    </div>
+    <div id="right">
+      <div id="stageWrap">
+        <div id="stageHeader"><svg class="flag" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#ffcc00" d="M4 2v20h1V13h11l3 3V2H4z"></path></svg> Stage</div>
+        <canvas id="stage" width="480" height="360"></canvas>
+      </div>
+      <div id="variables">
+        <div class="vars-header">Variables</div>
+        <div id="varsControls">
+          <input id="varNameInput" placeholder="variable name" />
+          <button id="addVarBtn">Add</button>
+        </div>
+        <div id="varsList">(none)</div>
+      </div>
+      <div id="lists">
+        <div class="lists-header">Lists</div>
+        <div id="listsControls">
+          <input id="listNameInput" placeholder="list name" />
+          <button id="addListBtn">Add</button>
+        </div>
+        <div id="listsList">(none)</div>
+      </div>
+      <div id="procedures">
+        <div class="procs-header">Procedures</div>
+        <div id="procsList">(none)</div>
+      </div>
+      <div id="log"></div>
+    </div>
+  </div>
+
+  <xml id="toolbox" style="display: none">
+    <category name="Events" colour="#5C81A6">
+      <block type="when_flag_clicked_s"></block>
+    </category>
+    <category name="Motion" colour="#4C97FF">
+      <block type="move_steps_s">
+        <value name="STEPS">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="Control" colour="#FFAB19">
+      <block type="controls_wait_s">
+        <value name="DURATION">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+  </xml>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

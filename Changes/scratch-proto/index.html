@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scratch‑like Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Blockly from unpkg (vanilla) -->
+  <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="left">
+      <div id="controls">
+        <button id="runBtn">Play</button>
+        <button id="stopBtn">Stop</button>
+        <button id="saveBtn">Save</button>
+        <input id="fileLoader" type="file" accept="text/xml" style="display:none" />
+        <button id="loadBtn">Load</button>
+      </div>
+      <div id="blocklyArea">
+        <div id="blocklyDiv" style="height:600px; width:100%;"></div>
+      </div>
+    </div>
+    <div id="right">
+      <div id="stageWrap">
+        <canvas id="stage" width="480" height="360"></canvas>
+      </div>
+      <div id="log"></div>
+    </div>
+  </div>
+
+  <xml id="toolbox" style="display: none">
+    <category name="Events" colour="#5C81A6">
+      <block type="when_flag_clicked"></block>
+    </category>
+    <category name="Motion" colour="#4C97FF">
+      <block type="move_steps">
+        <value name="STEPS">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="Control" colour="#FFAB19">
+      <block type="controls_wait">
+        <value name="DURATION">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+  </xml>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
