@@ -18,3 +18,9 @@
 /static/assets/media/frontpage.png
 /.codesandbox/tasks.json
 /tools.html
+
+# Ignore uploaded files and node modules
+/uploads/
+node_modules/
+npm-debug.log
+yarn-error.log

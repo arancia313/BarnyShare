@@ -1,30 +1,13 @@
 {
-     "adminCommands": [
-        {
-            "command": ";shutdown",
-            "name": "Shutdown"
-        },
-        {
-            "command": ";guestBuster",
-            "name": "Guestbuster"
-        },
-        {
-            "command": ";guest",
-            "name": "Guest"
-        },
-        {
-            "command": ";showGlobal",
-            "name": "Showglobal"
-        },
-        {
-            "command": ";unshowGlobal",
-            "name": ";Unshowglobal"
-        }
-     ],
-     "jacks": {
-        "command": "start"
-     },
-     "configurations": [
-        "type", "chrome"
-     ]
+  "commands": [
+    ";guestBuster",
+    ";shutdown",
+    ";showGlobal",
+    ";guest",
+    ";unshowGlobal",
+    ";strangerMode",
+    ";barny_Start",
+    ";unstrangerMode",
+    ";recoverUsername"
+  ]
 }
