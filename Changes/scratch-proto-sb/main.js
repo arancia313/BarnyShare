@@ -256,6 +256,12 @@ function handleWorkerMessage(msg) {
   else if (msg.type === 'list-update') {
     updateList(msg.name, msg.items || []);
   }
+  else if (msg.type === 'var-delete') {
+    if (msg.name) { delete vars[msg.name]; renderVars(); }
+  }
+  else if (msg.type === 'list-delete') {
+    if (msg.name) { delete lists[msg.name]; renderLists(); }
+  }
 }
 
 // Run/Save/Load
@@ -324,9 +330,12 @@ addVarBtn.addEventListener('click', () => {
   vars[name] = 0;
   renderVars();
   varNameInput.value = '';
+  // notify worker of new var if running
+  try { if (worker) worker.postMessage({type:'set-var', name: name, value: 0}); } catch(e){}
 });
 
-function deleteVar(name){ if (!name) return; delete vars[name]; renderVars(); }
+// notify worker on delete
+function deleteVar(name){ if (!name) return; delete vars[name]; renderVars(); try { if (worker) worker.postMessage({type:'del-var', name}); } catch(e){} }
 
 // Lists UI
 const lists = {};
@@ -340,6 +349,7 @@ addListBtn.addEventListener('click', () => {
   lists[name] = [];
   renderLists();
   listNameInput.value = '';
+  try { if (worker) worker.postMessage({type:'create-list', name}); } catch(e){}
 });
 
 function renderLists(){
@@ -349,7 +359,8 @@ function renderLists(){
   Array.from(listsList.querySelectorAll('.del-list')).forEach(btn => btn.addEventListener('click', (e)=>{ const name=e.currentTarget.dataset.list; deleteList(name); }));
 }
 function updateList(name, items){ lists[name] = items; renderLists(); }
-function deleteList(name){ delete lists[name]; renderLists(); }
+// notify worker on delete
+function deleteList(name){ delete lists[name]; renderLists(); try { if (worker) worker.postMessage({type:'delete-list', name}); } catch(e){} }
 
 // Procedures UI
 const procs = {};
