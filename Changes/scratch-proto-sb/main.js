@@ -129,12 +129,44 @@ BlocksAPI.Blocks['proc_def_s'] = {
 };
 BlocksAPI.Blocks['proc_call_s'] = {
   init: function() {
-    this.appendDummyInput().appendField('call').appendField(new BlocksAPI.FieldTextInput('myProc'), 'NAME').appendField('with').appendField(new BlocksAPI.FieldTextInput('', ''), 'ARGS');
+    this.appendDummyInput().appendField('call').appendField(new BlocksAPI.FieldTextInput('myProc'), 'NAME');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(120);
+    // update inputs on NAME change
+    this.getField('NAME').setValidator(() => { updateProcCallInputs(this); });
+    // initial update
+    updateProcCallInputs(this);
   }
 };
+
+// Helper to update proc_call_s inputs based on proc_def_s
+function updateProcCallInputs(callBlock) {
+  const name = callBlock.getFieldValue('NAME');
+  // find matching proc_def block
+  let procDef = null;
+  for (const b of workspace.getAllBlocks()) {
+    if (b.type === 'proc_def_s' && b.getFieldValue('NAME') === name) {
+      procDef = b;
+      break;
+    }
+  }
+  // remove old inputs
+  for (let i = callBlock.inputList.length - 1; i >= 0; i--) {
+    const inp = callBlock.inputList[i];
+    if (inp.name && inp.name.startsWith('ARG')) callBlock.removeInput(inp.name);
+  }
+  // add new inputs based on procDef
+  if (procDef) {
+    const argsStr = procDef.getFieldValue('ARGS') || '';
+    const argNames = argsStr.split(',').map(s=>s.trim()).filter(Boolean);
+    for (let i = 0; i < argNames.length; i++) {
+      callBlock.appendValueInput('ARG' + i).appendField(argNames[i]);
+    }
+  }
+  // bump block to refresh rendering
+  callBlock.bumpNeighbours();
+}
 
 
 // Generators: scratch-blocks usually reuses Blockly generators
@@ -208,9 +240,13 @@ Generator['proc_def_s'] = function(block){
 };
 Generator['proc_call_s'] = function(block){
   const name = block.getFieldValue('NAME') || 'myProc';
-  const argsRaw = block.getFieldValue('ARGS') || '';
-  // argsRaw should be a comma-separated list of JS expressions; wrap into array
-  const argsArrayCode = argsRaw.trim() ? `[${argsRaw}]` : '[]';
+  // collect ARGx inputs
+  const args = [];
+  for (let i = 0; block.getInput('ARG' + i); i++) {
+    const code = Generator.valueToCode(block, 'ARG' + i, Generator.ORDER_ATOMIC) || '0';
+    args.push(code);
+  }
+  const argsArrayCode = args.length > 0 ? `[${args.join(', ')}]` : '[]';
   return `await __CALL_PROC__('${name}', ${argsArrayCode});\\n`;
 };
 
