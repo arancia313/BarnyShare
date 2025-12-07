@@ -1,3 +1,8 @@
+/*
+    I would like to tell you something.
+    This code was created by me and corrected by Copilot.
+    I will add some more features here.
+*/
 (function(BarnyWarp) {
   'use strict';
   /*
@@ -60,16 +65,12 @@
     ];
     const Commands = fetchedCommands || defaultCommands;
     /*
-     Prompt for passcode and verify it server-side. We intentionally do NOT
+     Prompt for passcode and verify it server-side. I intentionally do NOT
      rely on any passcode shipped inside commands.json.
     */
     const entered = prompt('Admin passcode?');
     if (entered === null) {
-      console.log(
-        '%cFATAL ERROR!!! %cAdmin prompt cancelled by user.',
-        "color:white",
-        "color:red"
-      );
+      console.log('FATAL ERROR: %cAdmin prompt cancelled by user.');
       return;
     }
 
@@ -81,7 +82,7 @@
         BarnyWarp.commands = Commands;
       }
     } else {
-      alert("WHOOPS! Passcode non valida o verifica server-side non disponibile.");
+      alert("WHOOPS! Invalid passcode or unavailable server-side.");
     }
   }
 
@@ -93,3 +94,4 @@
   }
 
 })(typeof window !== 'undefined' ? window.BarnyWarp : (typeof globalThis !== 'undefined' ? globalThis.BarnyWarp : undefined));
+
