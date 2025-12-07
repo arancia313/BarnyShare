@@ -40,6 +40,7 @@
         a {
             color: aliceblue; /* AliceBlue color for links */
             font-size: 1.5em;
+            padding: 13;
             text-align: right;
             text-decoration: none; 
         }
@@ -355,16 +356,13 @@
         <p>Royal-based coding with tons of capabilities</p>
         <p>Built off Penguinmod and Snail IDE</p>
         <p>Scratch Note: Please don't mention BarnyWarp on Scratch, i have different rules compared to Scratch! 😅</p>
-        <button id = "try" >Try it out!</button>
     </div>
         <section>
-        <div id = "recentChanges">
+                    <div id = "recentChanges">
             <h2>Recent changes</h2>
             <ul></ul>
         </div>
-                <p>Welcome to the page of BarnyWarp.</p>
-                <button id="antistress">Antistress</button>
-                <button id = "downloadBtn">Download Latest Editor For BarnyWarp</button>
+        </section>
                 <!-- Thanks copilot for your help. AI is getting crazier and crazier... -->
                 <div>
                     <button id="toggleBtn" aria-expanded="false" aria-controls="toggleContent">Show Changes of old version</button>
@@ -429,7 +427,7 @@
                 window.location.href = "https://arancia313.github.io/BarnyShare/editor";
         });
 
-        // Carica commit recenti da GitHub API
+        // Carica commit recenti da GitHb API
         $.get('https://api.github.com/repos/arancia313/BarnyShare/commits?sha=System', function(data) {
             var commitsSection = $("#recentChanges ul");
             data.forEach(function(commit) {
@@ -491,7 +489,6 @@
     </script>
                        <script type = "module" src = "./admin/index.mjs"></script>
                        <script type = "module" src = "./facts/index.mjs"></script>
-                       <script src  = "./sys/download.js"></script>
                        
                        <!-- Upload section link -->
                        <div style="text-align: center; margin: 40px 0;">
