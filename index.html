@@ -355,7 +355,7 @@
         <h1>BarnyWarp</h1>
         <p>Royal-based coding with tons of capabilities</p>
         <p>Built off Penguinmod and Snail IDE</p>
-        <p style = "color:rgb(0, 95, 55);">Starting on May 6, 2026, Peter Jasper will collaborate with Arancia 3 on BarnyShare.</p>
+        <p style = "color:red;">BarnyShare is made by a developer with an Another language. Don't blame me just because of some errors. :\</p>
     </div>
         <section>
                     <div id = "recentChanges">
@@ -427,7 +427,7 @@
                 window.location.href = "https://arancia313.github.io/BarnyShare/editor";
         });
 
-        // Carica commit recenti da GitHb API
+        // Loads Recent changes of this website.
         $.get('https://api.github.com/repos/arancia313/BarnyShare/commits?sha=System', function(data) {
             var commitsSection = $("#recentChanges ul");
             data.forEach(function(commit) {
@@ -439,7 +439,7 @@
             });
         });
 
-		// Loads recent changes of the old version.
+		// Loads recent changes of the so-called "old" version.
         $.get('https://api.github.com/repos/arancia313/BarnyWarp/commits?sha=work', function(data) {
             var commitsSection = $("#recentChanges2 ul");
             data.forEach(function(commit) {
