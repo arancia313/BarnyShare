@@ -359,7 +359,9 @@
         <section>   
             <h2>A3N Announcements</h2>
             <div id = "id"></div>
-<div id = "recentChanges">
+            <h3>Platform Announcements</h3>
+            <div id = "pa"></div>
+            <div id = "recentChanges">
             <h2>Recent changes</h2>  
             <ul></ul>
         </div>
@@ -490,6 +492,10 @@
     const url = "https://raw.githubusercontent.com/arancia313/Arancia-3-Network/refs/heads/System/net/A3N_Announcements/net_announcements.txt";
     // let's make the response more compact, shall we.
     fetch(url).then(r=>r.text()).then(t=>document.getElementById("id").innerText=t);
+    // and ANOTHER const-
+    const url2 = "https://raw.githubusercontent.com/arancia313/Arancia-3-Network/refs/heads/System/net/platform_updates/BarnyShare/updates.txt";
+    // here.
+    fetch(url2).then(r=>r.text()).then(t=>document.getElementById("pa").innerText=t);
     </script>
                        <script type = "module" src = "./facts/index.mjs"></script>
                </body>
