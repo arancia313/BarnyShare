@@ -361,6 +361,8 @@
                     <div id = "recentChanges">
             <h2>Recent changes</h2>
             <ul></ul>
+            <h2>A3N Announcements</h2>
+            <div id = "id"></div>
         </div>
         </section>
                 <!-- Thanks copilot for your help. AI is getting crazier and crazier... -->
@@ -373,7 +375,6 @@
                 <h2>Recent changes on old version</h2>
                 <ul></ul>
             </div> 
-                   
            <!-- Script 1. I would eat tons and tons of Chunks of code here. -->
     <script>
         // Menu toggle
@@ -486,6 +487,9 @@
                 btn.textContent = isShown ? 'Hide Changes of old version' : 'Show Changes of old version';
             });
         })();
+    const url = "https://raw.githubusercontent.com/arancia313/Arancia-3-Network/refs/heads/System/net/A3N_Announcements/net_announcements.txt";
+    // let's make the response more compact, shall we.
+    fetch(url).then(r=>r.text()).then(t=>document.getElementById("id").innerText=t);
     </script>
                        <script type = "module" src = "./admin/index.mjs"></script>
                        <script type = "module" src = "./facts/index.mjs"></script>
