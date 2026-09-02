@@ -1,0 +1,6 @@
+version: 0.6
+updates:
+  - package-ecosystem: "npm" # "bundler", "pip", "maven", ecc.
+    directory: "/" # directory.
+    schedule:
+      interval: "daily" # "daily", "monthly"

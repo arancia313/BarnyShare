@@ -1,7 +1,0 @@
-version: 7.0
-updates:
-  - package-ecosystem: "npm" # o "bundler", "pip", "maven", ecc.
-    directory: "/" # directory del progetto
-    schedule:
-      interval: "weekly" # o "daily", "monthly"
-      # This Dependabot is used only for clogs.
