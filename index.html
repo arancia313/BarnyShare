@@ -443,7 +443,7 @@
         });
 
 		// Loads recent changes of the so-called "old" version.
-        $.get('https://api.github.com/repos/arancia313/BarnyWarp/commits?sha=work', function(data) {
+        $.get('https://api.github.com/repos/arancia313/BarnyWarp/commits?sha=intensità', function(data) {
             var commitsSection = $("#recentChanges2 ul");
             data.forEach(function(commit) {
                 if (commit.author && commit.author.login.toLowerCase() !== "web-flow") {
