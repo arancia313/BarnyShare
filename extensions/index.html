@@ -347,9 +347,9 @@
     </div>
         <section>
         <p>Some extensions.</p>
-        <button id = "ext-barnywarp">BarnyWarp</button>
+       <button id = "ext-barnywarp">BarnyWarp</button>
         <button id = "ext-extflashy">Extflashy</button>
-        <button id = "ext-barnyline">Barnyline</button>
+        <button id = "ext-barnyline">Barnyline</button> 
     </section>
     <script>
         // Menu toggle
@@ -384,16 +384,6 @@
             }
         });
 
-        // When you click the first button. 
-
-        document.querySelector('#ext-barnywarp').addEventListener('click', function() {
-               window.location.replace = "https://arancia313.github.io/BarnyShare/extensions/BarnyWarp.js"
-        });
-        // When you click the second button.
-
-        document.querySelector('#ext-extflashy').addEventListener('click', function() {
-               window.location.replace = "https://arancia313.github.io/BarnyShare/extensions/Extflashy.js"
-        });
 
         // Carica commit recenti da GitHub API
         $.get('https://api.github.com/repos/arancia313/BarnyWarp/commits?sha=work', function(data) {
@@ -468,19 +458,6 @@
             console.log(`%cBarnyFact: %c${fact}`, "color: orangered; font-size: 1.5em; font-weight: bold;", "color: white; font-size: 1.25rem;"); // AHH copilot.
    </script>
    <script>
-       // I want this server. This http server NEEDS to be here...
-import { createServer } from 'node:http';
-
-       const server = createServer((req, res) => {
-       res.writeHead(200, { 'Content-Type': 'text/plain' });
-       res.end('Hello World!\n');
-    });
-
-// starts a simple http server locally on port 3000
-       server.listen(3000, '127.0.0.1', () => {
-          console.log('Listening on 127.0.0.1:3000');
-   });
-
 // run with `node server.mjs`
 
    </script>
