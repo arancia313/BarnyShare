@@ -202,8 +202,30 @@
             align-items: center;
             text-align: center;
         }
+        .section-3 {
+            background: rgb(199, 199, 199);
+            color: orangered;
+            padding: 20px;
+            border-radius: 20px;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .section-3.dark-mode {
+            background: rgb(19, 19, 19);
+            color: orangered;
+            padding: 20px;
+            border-radius: 20px;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .section-3 p {
+            font-size: 1rem;
+            align-items: center;
+            text-align: center;
+        }
         .footer-warn {
-                position: fixed;
                 bottom: 0;
                 width: 100%;
                 size: 30px;
@@ -352,12 +374,21 @@
         <p>Royal-based coding with tons of capabilities</p>
         <p>Built off Penguinmod and Snail IDE</p>
         <p style = "color:red;">BarnyShare is made by a developer with another language. Don't blame me just because of some typos. :\</p>
+        <div class="footer-warn">
+            <p style="color:black;">
+                    I'm doing several modifications to the page, so please be cautious.
+                    There could be bugs, problems, or a whole lot going on.
+                </p>
+        </div>
+        
     </div>
-        <section>   
-            <h2 style = "color:rgb(0, 255, 255);">A3N Announcements</h2>
+    <div class="section-3">
+        <h2 style = "color:rgb(0, 255, 255);">A3N Announcements</h2>
             <div id = "id"></div>
-            <h3>Platform Announcements</h3>
+            <h3 style="color:orange">BarnyShare Announcements</h3>
             <div id = "pa"></div>
+            </div>
+        <section>   
             <div id = "recentChanges">
             <h2>Recent changes</h2>  
             <ul></ul>
@@ -393,7 +424,7 @@
             applyMode(newMode);
         });
         function applyMode(mode) {
-            $('body, nav, section, footer, .footer-row a, .section-2, .footer-row, button').removeClass('dark-mode light-mode').addClass(mode);
+            $('body, nav, section, footer, .footer-row a, .section-2, .section-3, .footer-row, button').removeClass('dark-mode light-mode').addClass(mode);
         }
 
         // Ricercas
