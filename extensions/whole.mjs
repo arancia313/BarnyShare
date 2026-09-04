@@ -1,8 +1,8 @@
-        document.getElementById("audioon").play();
         // Menu toggle
         $('#icon').click(function(){
             $('nav ul').toggleClass('show');
         });
+
         // Modalità scura
         const storedMode = localStorage.getItem('mode');
         if (storedMode) {

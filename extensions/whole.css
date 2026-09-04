@@ -217,13 +217,14 @@
             text-align: center;
         }
         .footer-warn {
+                bottom: 0;
                 width: 100%;
-                size: 10px;
+                size: 30px;
                 padding: 0;
-                height: 3.0vh;
+                height: 2.6vh;
                 border-radius: 20px;
-                margin: 0;
-                display: top;
+                margin: 1;
+                display: flex;
                 background-color: rgb(255, 238, 0);
                 text-align: center;
                 justify-content: center;
@@ -232,25 +233,9 @@
         .footer-warn p {
             color: black;
             font-size: 1.3rem;
+            align-items: center;
             text-align: center;
-        }
-        .footer-error {
-                width: 100%;
-                size: 30px;
-                padding: 0;
-                height: 3.0vh;
-                border-radius: 20px;
-                margin: 1;
-                display: top;
-                background-color: red;
-                text-align: center;
-                justify-content: center;
-                font-size:1em;
-        }
-        .footer-error p {
-            color: black;
-            font-size: 1.3rem;
-            text-align: center;
+            justify-content: center;
         }
         footer {
                 position: fixed;
