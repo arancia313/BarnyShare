@@ -1,3 +1,4 @@
+        // My scripts.
         document.getElementById("audioon").play();
         // Menu toggle
         $('#icon').click(function(){
