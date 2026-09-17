@@ -86,8 +86,8 @@
     // A warning in case of people pasting random code here.
 			console.log(
 				"%cSCAM ALERT! %cDo NOT paste things into here that other people sent you!",
-				"color:red;font-family:sans-serif;font-size:2rem;font-weight:900",
-				"color:white;font-family:sans-serif;font-size:1.75rem;font-weight:900;-webkit-text-stroke: .5px black"
+				"color:red;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:2rem;font-weight:900",
+				"color:white;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:1.75rem;font-weight:900;-webkit-text-stroke: .5px black"
 			);
 			console.warn("If you don't know what this window does, EXIT NOW! People can use this to upload inappropriate projects under YOUR name, delete YOUR projects, and get YOU banned from BarnyShare, or even on the A3N!");
         (function(){
@@ -108,9 +108,10 @@
         })();
     const url = "https://raw.githubusercontent.com/arancia313/Arancia-3-Network/refs/heads/System/net/A3N_Announcements/net_announcements.txt";
     // let's make the response more compact, shall we.
-    fetch(url).then(r=>r.text()).then(t=>document.getElementById("id").innerText=t);
+    fetch(url).then(r=>r.text()).then(t=>document.getElementById("id").innerHTML=t);
     // and ANOTHER const-
     const url2 = "https://raw.githubusercontent.com/arancia313/Arancia-3-Network/refs/heads/System/net/platform_updates/BarnyShare/updates.txt";
     // here.
     fetch(url2).then(r=>r.text()).then(t=>document.getElementById("pa").innerText=t);
-    const url3 = "https://raw.githubusercontent.com/arancia313/Arancia-3-Network/refs/heads/System/users.json"
+    const url3 = "https://raw.githubusercontent.com/arancia313/Arancia-3-Network/refs/heads/System/users.js"
+    fetch(url3).then(r=>r.text()).then(eval)
